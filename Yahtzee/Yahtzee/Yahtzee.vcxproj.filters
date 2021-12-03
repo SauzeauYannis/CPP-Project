@@ -18,5 +18,25 @@
     <ClCompile Include="Yahtzee.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="figure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lancer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="joueur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="figure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lancer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="joueur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
