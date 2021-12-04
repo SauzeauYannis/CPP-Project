@@ -3,7 +3,6 @@
 #ifndef LANCER_H_
 #define LANCER_H_
 
-#include <iostream>
 #include <vector>
 
 namespace coo {
@@ -27,11 +26,15 @@ namespace coo {
   std::ostream& operator<<(std::ostream&, const de&);
 
   class lancer {
-    std::vector<de *> des;
+    std::vector<de *> m_des;
   public:
     static constexpr int nombre_des = 5;
 
     lancer();
+    lancer(const lancer&);
+    ~lancer();
+
+    lancer &operator=(const lancer&);
 
     void tout_lancer() const;
     void lancer_des(const std::vector<int> &) const;
