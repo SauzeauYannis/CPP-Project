@@ -8,31 +8,38 @@
 
 namespace coo {
 
-  constexpr int nombre_des = 6;
-
   class de {
     const int m_numero;
     int m_valeur = 0;
   public:
-    de(int);
+    static constexpr int val_min = 1;
+    static constexpr int val_max = 6;
 
-    void lance() { m_valeur = 1 + std::rand() % 6; }
+    de(const int numero) : m_numero(numero) {}
+
+    void lance() { m_valeur = val_min + std::rand() % val_max; }
 
     int valeur() const { return m_valeur; }
-    int numero() const { return m_numero; }
+
+    friend std::ostream& operator<<(std::ostream&, const de&);
   };
+
+  std::ostream& operator<<(std::ostream&, const de&);
 
   class lancer {
     std::vector<de *> des;
   public:
+    static constexpr int nombre_des = 5;
+
     lancer();
-    lancer(const lancer& lancer);
-    //~lancer();
 
-    lancer& operator=(const lancer& lancer);
+    void tout_lancer() const;
+    void lancer_des(const std::vector<int> &) const;
 
-    void tout_lancer();
+    friend std::ostream &operator<<(std::ostream &, const lancer &);
   };
+
+  std::ostream &operator<<(std::ostream &, const lancer &);
 
 } // namespace coo
 
