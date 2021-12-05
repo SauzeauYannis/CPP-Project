@@ -4,6 +4,7 @@
 #define LANCER_H_
 
 #include <vector>
+#include<iostream>
 
 namespace coo {
 
@@ -38,7 +39,7 @@ namespace coo {
 
     void tout_lancer() const;
     void lancer_des(const std::vector<int> &) const;
-
+    std::vector<de*> getDesObtenus() const;
     friend std::ostream &operator<<(std::ostream &, const lancer &);
   };
 

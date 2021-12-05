@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Yahtzee.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="figure.cpp">
@@ -30,6 +30,27 @@
     <ClCompile Include="graphique.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="brelan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="petiteSuite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="grandeSuite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="carre.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="yahtzee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="full.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="figure.h">
@@ -42,6 +63,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="graphique.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="brelan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="petiteSuite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="grandeSuite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="full.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="carre.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="chance.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="yahtzee.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

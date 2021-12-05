@@ -61,4 +61,8 @@ namespace coo {
     return out;
   }
 
+  std::vector<de*> lancer::getDesObtenus() const {
+      return m_des;
+  }
+
 }

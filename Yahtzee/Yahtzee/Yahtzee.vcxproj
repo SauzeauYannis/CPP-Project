@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -139,17 +139,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="brelan.cpp" />
+    <ClCompile Include="carre.cpp" />
+    <ClCompile Include="chance.cpp" />
     <ClCompile Include="figure.cpp" />
+    <ClCompile Include="full.cpp" />
+    <ClCompile Include="grandeSuite.cpp" />
     <ClCompile Include="graphique.cpp" />
     <ClCompile Include="joueur.cpp" />
     <ClCompile Include="lancer.cpp" />
-    <ClCompile Include="Yahtzee.cpp" />
+    <ClCompile Include="petiteSuite.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="yahtzee.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="brelan.h" />
+    <ClInclude Include="carre.h" />
+    <ClInclude Include="chance.h" />
     <ClInclude Include="figure.h" />
+    <ClInclude Include="full.h" />
+    <ClInclude Include="grandeSuite.h" />
     <ClInclude Include="graphique.h" />
     <ClInclude Include="joueur.h" />
     <ClInclude Include="lancer.h" />
+    <ClInclude Include="petiteSuite.h" />
+    <ClInclude Include="yahtzee.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

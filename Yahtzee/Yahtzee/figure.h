@@ -20,7 +20,7 @@ namespace coo {
     figure(const partie &partie, const std::string &nom)
       : m_partie(partie), m_nom(nom) {}
 
-    virtual void calc_points(const lancer&) = 0;
+    virtual int calc_points(const lancer&) = 0;
 
     void est_choisie() { m_est_realisee = true; }
   };
@@ -31,7 +31,7 @@ namespace coo {
     figure_partie_inf(const std::string &nom, int valeur)
       : figure(partie::partie_inferieur, nom), m_valeur(valeur) {}
 
-    void calc_points(const lancer &) override;
+    int calc_points(const lancer &) override;
   };
 
 } // namespace coo
