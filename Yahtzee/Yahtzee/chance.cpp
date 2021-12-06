@@ -12,11 +12,11 @@ int coo::chance::calc_points(const lancer& lancer) {
     int tab[6] = { 0,0,0,0,0,0 };
     int somme = 0;
     for (int i = 0; i < 5; i++) {
-        tab[lancer.getDesObtenus().at(i)->valeur()] += 1;
-        somme += lancer.getDesObtenus().at(i)->valeur();
+        tab[lancer[i].valeur()] += 1;
+        somme += lancer[i].valeur();
         
     }  
-        return somme;
+  return somme;
 }
 
 

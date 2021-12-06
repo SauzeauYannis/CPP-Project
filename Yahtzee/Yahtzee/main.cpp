@@ -11,7 +11,7 @@ int main() {
 
   std::srand(std::time(nullptr));
 
-  coo::lancer lancer;
+  const coo::lancer lancer;
   for (int i = 0; i < 3; ++i) {
     std::cout << "Lancer numero " + std::to_string(i + 1) << std::endl;
     lancer.tout_lancer();
@@ -23,6 +23,12 @@ int main() {
   std::cout << "Lancer numero 4 uniquement sur les des 2 et 4" << std::endl;
   lancer.lancer_des({ 2, 4 });
   std::cout << lancer << std::endl;
+
+  coo::graphique::pause();
+  coo::graphique::efface();
+
+  std::cout << "Affichage du premier des du lancer precedent" << std::endl;
+  std::cout << lancer[0] << std::endl;
 
   return 0;
 }

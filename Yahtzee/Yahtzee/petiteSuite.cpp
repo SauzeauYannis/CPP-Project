@@ -13,12 +13,12 @@ int coo::petiteSuite::calc_points(const lancer& lancer) {
     int tab[6] = { 0,0,0,0,0,0 };
     int res = 30, cpt = 0;
     for (size_t i = 0; i < 5; i++)
-        tab[lancer.getDesObtenus().at(i)->valeur()] += 1;
+        tab[lancer[i].valeur()] += 1;
       
     for (size_t j = 0; j < 5; j++) {
-        if (lancer.getDesObtenus().at(j)->valeur() == 1 && lancer.getDesObtenus().at(j+1)->valeur() == 1) {
-            cpt++;
-        }
+      if (lancer[j].valeur() == 1 && lancer[j + 1].valeur() == 1) {
+        cpt++;
+      }
     }    
     if (cpt==4)
         return res;

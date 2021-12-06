@@ -14,9 +14,9 @@ int coo::yahtzee::calc_points(const lancer& lancer) {
     bool isYahtzee = false;
     int res = 50;
     for (int i = 0; i < 5; i++) {
-        tab[lancer.getDesObtenus().at(i)->valeur()] += 1;
+        tab[lancer[i].valeur()] += 1;
       
-        if (tab[lancer.getDesObtenus().at(i)->valeur()] == 5) {
+        if (tab[lancer[i].valeur()] == 5) {
             isYahtzee = true;
         }
     }

@@ -14,17 +14,16 @@ int coo::grandeSuite::calc_points(const lancer& lancer) {
     bool smallStraigth = false;
     int res = 40, cpt = 0;
     for (size_t i = 0; i < 5; i++)
-        tab[lancer.getDesObtenus().at(i)->valeur()] += 1;
+        tab[lancer[i].valeur()] += 1;
 
     for (size_t j = 0; j < 5; j++) {
-        if (lancer.getDesObtenus().at(j)->valeur() == 1 && lancer.getDesObtenus().at(j + 1)->valeur() == 1) {
+        if (lancer[j].valeur() == 1 && lancer[j + 1].valeur() == 1) {
             cpt++;
         }
     }
     if (cpt == 5)
         return res;
-    else
-        return -1;
+  return -1;
 }
 
 

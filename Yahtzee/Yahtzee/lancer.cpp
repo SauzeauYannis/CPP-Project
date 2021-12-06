@@ -10,15 +10,13 @@
 namespace coo {
 
   std::ostream& operator<<(std::ostream& out, const de& de) {
-    //out << "Des " + std::to_string(de.m_numero) + " = " + std::to_string(de.m_valeur);
-    out << std::to_string(de.m_numero) << ")" << std::endl
-        << graphique::affiche_de(de) << std::endl;
+    out << graphique::affiche_de(de) << std::endl;
     return out;
   }
 
   lancer::lancer() {
     for (int i = 1; i <= nombre_des; ++i) {
-      m_des.push_back(new de(i));
+      m_des.push_back(new de);
     }
   }
 
@@ -50,19 +48,11 @@ namespace coo {
   }
 
   std::ostream &operator<<(std::ostream &out, const lancer &lancer) {
-    /*std::vector<de*> m_des = lancer.m_des;
-    std::sort(m_des.begin(), m_des.end(),
-              [](const de *d1, const de *d2) {
-                return d1->valeur() < d2->valeur();
-              });*/
-    for (de *de : lancer.m_des) {
-      out << *de << std::endl;
+    for (int i = 0; i < static_cast<int>(lancer.m_des.size()); ++i) {
+      out << i + 1 << ")" << std::endl
+          << *lancer.m_des[i] << std::endl;
     }
     return out;
-  }
-
-  std::vector<de*> lancer::getDesObtenus() const {
-      return m_des;
   }
 
 }

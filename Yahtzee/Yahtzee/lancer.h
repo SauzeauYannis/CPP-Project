@@ -9,13 +9,10 @@
 namespace coo {
 
   class de {
-    const int m_numero;
     int m_valeur = 0;
   public:
     static constexpr int val_min = 1;
     static constexpr int val_max = 6;
-
-    de(const int numero) : m_numero(numero) {}
 
     void lance() { m_valeur = val_min + std::rand() % val_max; }
 
@@ -39,7 +36,9 @@ namespace coo {
 
     void tout_lancer() const;
     void lancer_des(const std::vector<int> &) const;
-    std::vector<de*> getDesObtenus() const;
+
+    de& operator[](int de_pos) const { return *m_des[de_pos]; }
+
     friend std::ostream &operator<<(std::ostream &, const lancer &);
   };
 
