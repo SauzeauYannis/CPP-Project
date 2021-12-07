@@ -8,46 +8,27 @@
 
 namespace coo {
 
+  template <int valeur_des>
   class figure_superieure : public figure {
-    const int m_valeur;
   public:
     static constexpr int nombre_figure = 6;
 
-    figure_superieure(const std::string& nom, int valeur)
-      : figure(partie::partie_superieur, nom), m_valeur(valeur) {}
+    figure_superieure(const std::string& nom)
+      : figure(partie::partie_superieur, nom) {}
 
     void calc_points(const lancer&) override;
   };
 
-  class as: public figure_superieure {
-  public:
-    as() : figure_superieure("As", 1) {}
-  };
-
-  class deux: public figure_superieure {
-  public:
-    deux() : figure_superieure("Deux", 2) {}
-  };
-
-  class trois: public figure_superieure {
-  public:
-    trois() : figure_superieure("Trois", 3) {}
-  };
-
-  class quatre: public figure_superieure {
-  public:
-    quatre() : figure_superieure("Quatre", 4) {}
-  };
-
-  class cinq : public figure_superieure {
-  public:
-    cinq() : figure_superieure("Cinq", 5) {}
-  };
-
-  class six: public figure_superieure {
-  public:
-    six() : figure_superieure("Six", 6) {}
-  };
+  template <int valeur_des>
+  void figure_superieure<valeur_des>::calc_points(const lancer &lancer) {
+    int sum = 0;
+    for (int i = 0; i < lancer::nombre_des; ++i) {
+      if (lancer[i].valeur() == valeur_des) {
+        sum += valeur_des;
+      }
+    }
+    m_points = sum;
+  }
 
 } // namespace coo
 

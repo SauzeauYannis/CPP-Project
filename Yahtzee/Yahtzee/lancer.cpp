@@ -35,16 +35,29 @@ namespace coo {
     return *this;
   }
 
-  void lancer::tout_lancer() const {
+  void lancer::tout_lancer() {
+    m_somme_des = 0;
     for (de * de : m_des) {
       de->lance();
+      m_somme_des += de->valeur();
     }
+    trier();
   }
 
-  void lancer::lancer_des(const std::vector<int>& des_num) const {
+  void lancer::lancer_des(const std::vector<int>& des_num) {
     for (const int num : des_num) {
+      m_somme_des -= m_des[num - 1]->valeur();
       m_des[num - 1]->lance();
+      m_somme_des += m_des[num - 1]->valeur();
     }
+    trier();
+  }
+
+  void lancer::trier() {
+    std::sort(m_des.begin(), m_des.end(),
+      [](const de* d1, const de* d2) {
+        return d1->valeur() < d2->valeur();
+      });
   }
 
   std::ostream &operator<<(std::ostream &out, const lancer &lancer) {

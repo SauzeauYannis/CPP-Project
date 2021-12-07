@@ -24,7 +24,10 @@ namespace coo {
   std::ostream& operator<<(std::ostream&, const de&);
 
   class lancer {
+    unsigned int m_somme_des = 0;
     std::vector<de *> m_des;
+
+    void trier();
   public:
     static constexpr int nombre_des = 5;
 
@@ -34,8 +37,10 @@ namespace coo {
 
     lancer &operator=(const lancer&);
 
-    void tout_lancer() const;
-    void lancer_des(const std::vector<int> &) const;
+    void tout_lancer();
+    void lancer_des(const std::vector<int> &);
+
+    unsigned int somme_des() const { return m_somme_des; }
 
     de& operator[](int de_pos) const { return *m_des[de_pos]; }
 
