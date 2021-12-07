@@ -10,6 +10,7 @@ namespace coo {
 
   class figure_inferieure : public figure {
   public:
+    figure_inferieure() : figure(partie::partie_inferieur, "Full") {} // Default constructor for full
     figure_inferieure(const std::string& nom) : figure(partie::partie_inferieur, nom) {}
   };
 
@@ -30,13 +31,28 @@ namespace coo {
     void calc_points(const lancer &) override;
   };
 
-  template <int nombre_des_egaux>
-  class figure_des_egaux : public figure_inferieure {
+  template <int nombre_des_egaux, int nombre_de_fois = 1>
+  class figure_des_egaux : virtual public figure_inferieure {
     const unsigned int m_points_a_gagner;
   public:
     figure_des_egaux(const std::string& nom, int point_a_gagner = 0)
       : figure_inferieure(nom), m_points_a_gagner(point_a_gagner) {}
 
+    void calc_points(const lancer &) override;
+  };
+
+  class brelan : public figure_des_egaux<3> {
+  public:
+    brelan() : figure_des_egaux<3>("") {}
+  };
+
+  class double_paire : public figure_des_egaux<2, 2> {
+  public:
+    double_paire() : figure_des_egaux<2, 2>("") {}
+  };
+
+  class full : public brelan, public double_paire {
+  public:
     void calc_points(const lancer &) override;
   };
 
@@ -62,8 +78,9 @@ namespace coo {
     m_points = 0;
   }
 
-  template <int nombre_des_egaux>
-  void figure_des_egaux<nombre_des_egaux>::calc_points(const lancer &lancer) {
+  template <int nombre_des_egaux, int nombre_de_fois>
+  void figure_des_egaux<nombre_des_egaux, nombre_de_fois>::calc_points(const lancer &lancer) {
+    int nb_fois = nombre_de_fois;
     unsigned int cpt = 1;
 
     for (int numero_de = 0; numero_de < static_cast<int>(lancer::nombre_des) - 1; numero_de++) {
@@ -71,9 +88,12 @@ namespace coo {
         cpt++;
         if (cpt == nombre_des_egaux) {
           m_points = m_points_a_gagner == 0 ? lancer.somme_des() : m_points_a_gagner;
-          return;
+          --nb_fois;
+          if (nb_fois == 0) return;
+          while (numero_de + 1 < lancer::nombre_des && lancer[numero_de].valeur() == lancer[numero_de + 1].valeur()) ++numero_de;
         }
-      } else {
+      }
+      else {
         cpt = 1;
       }
     }
