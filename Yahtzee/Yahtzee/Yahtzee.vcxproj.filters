@@ -51,6 +51,9 @@
     <ClCompile Include="full.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="figure_superieure.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="figure.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="yahtzee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="figure_superieure.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

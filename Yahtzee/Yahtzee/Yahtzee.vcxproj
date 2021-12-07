@@ -143,6 +143,7 @@
     <ClCompile Include="carre.cpp" />
     <ClCompile Include="chance.cpp" />
     <ClCompile Include="figure.cpp" />
+    <ClCompile Include="figure_superieure.cpp" />
     <ClCompile Include="full.cpp" />
     <ClCompile Include="grandeSuite.cpp" />
     <ClCompile Include="graphique.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="carre.h" />
     <ClInclude Include="chance.h" />
     <ClInclude Include="figure.h" />
+    <ClInclude Include="figure_superieure.h" />
     <ClInclude Include="full.h" />
     <ClInclude Include="grandeSuite.h" />
     <ClInclude Include="graphique.h" />

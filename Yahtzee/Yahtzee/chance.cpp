@@ -3,20 +3,16 @@
 #include "chance.h"
 #include "lancer.h"
 
+namespace coo {
 
-using namespace coo;
+  //retourne la valeur du cumul des dés obtenus 
 
-//retourne la valeur du cumul des dés obtenus 
-
-int coo::chance::calc_points(const lancer& lancer) {
-    int tab[6] = { 0,0,0,0,0,0 };
+  void chance::calc_points(const lancer& lancer) {
     int somme = 0;
-    for (int i = 0; i < 5; i++) {
-        tab[lancer[i].valeur()] += 1;
-        somme += lancer[i].valeur();
-        
-    }  
-  return somme;
+    for (int i = 0; i < lancer::nombre_des; i++) {
+      somme += lancer[i].valeur();
+    }
+    m_points = somme;
+  }
+
 }
-
-

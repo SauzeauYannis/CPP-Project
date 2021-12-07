@@ -3,9 +3,10 @@
 #include "full.h"
 #include "lancer.h"
 
+namespace coo {
 
-using namespace coo;
+  void full::calc_points(const lancer &) {
+    // TODO 
+  }
 
-
-
-
+}

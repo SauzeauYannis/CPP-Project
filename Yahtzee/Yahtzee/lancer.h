@@ -3,8 +3,8 @@
 #ifndef LANCER_H_
 #define LANCER_H_
 
+#include <iostream>
 #include <vector>
-#include<iostream>
 
 namespace coo {
 
