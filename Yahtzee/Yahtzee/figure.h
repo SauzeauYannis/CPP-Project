@@ -18,6 +18,8 @@ namespace coo {
   protected:
     unsigned int m_points = 0;
   public:
+    static constexpr int nombre_figures = 13;
+
     figure(const partie &partie, const std::string &nom)
       : m_partie(partie), m_nom(nom) {}
 

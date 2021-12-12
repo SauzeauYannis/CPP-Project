@@ -63,9 +63,9 @@ namespace coo {
   }
 
   std::ostream &operator<<(std::ostream &out, const lancer &lancer) {
-    for (int i = 0; i < static_cast<int>(lancer.m_des.size()); ++i) {
-      out << i + 1 << ")" << std::endl
-          << *lancer.m_des[i] << std::endl;
+    for (int i = 1; i <= lancer::nombre_des; ++i) {
+      out << i << ") " << std::endl
+          << *lancer.m_des[i - 1] << std::endl;
     }
     return out;
   }

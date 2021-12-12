@@ -5,13 +5,15 @@
 
 #include <iostream>
 
+#include "figure.h"
 #include "lancer.h"
 
 namespace coo {
-
   class de;
+  class figure;
 
   class graphique {
+    static constexpr char separateur[] = "-----------------------------------";
     static constexpr char rond_de[de::val_max][9] = {
       {' ', ' ', ' ', ' ', 'o', ' ', ' ', ' ', ' '},
       {'o', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'o'},
@@ -23,7 +25,9 @@ namespace coo {
   public:
     static void pause();
     static void efface();
+    static void change_curseur_pos(short, short);
     static std::string affiche_de(const de&);
+    static void affiche_figures(coo::figure**);
   };
 
 } // namespace coo

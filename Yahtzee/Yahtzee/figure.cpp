@@ -1,6 +1,14 @@
+#include <iomanip>
+
 #include "figure.h"
 
-std::ostream & coo::operator<<(std::ostream &out, const figure &figure) {
-  out << figure.m_nom << ": " << figure.m_points << " point(s)";
-  return out;
+namespace coo {
+
+  std::ostream& operator<<(std::ostream& out, const figure& figure) {
+    out << "|" << std::left << std::setw(12) << figure.m_nom << "|"
+        << "  " << std::setw(4) << figure.m_points << "|"
+        << "   " << std::setw(4) << (figure.m_est_realisee ? "X" : "") << "|";
+    return out;
+  }
+
 }

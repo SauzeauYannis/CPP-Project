@@ -31,13 +31,15 @@ int main() {
 
   coo::lancer lancer;
   for (int i = 0; i < 3; ++i) {
+    figures[std::rand() % coo::figure::nombre_figures]->est_choisie();
+
     std::cout << "Lancer numero " + std::to_string(i + 1) << std::endl;
     lancer.tout_lancer();
     std::cout << lancer << std::endl;
     for (coo::figure* figure: figures) {
       figure->calc_points(lancer);
-      std::cout << *figure << std::endl;
     }
+    coo::graphique::affiche_figures(figures);
     coo::graphique::pause();
     coo::graphique::efface();
   }
