@@ -35,7 +35,7 @@ int main() {
 
     std::cout << "Lancer numero " + std::to_string(i + 1) << std::endl;
     lancer.tout_lancer();
-    std::cout << lancer << std::endl;
+    std::cout << lancer << std::endl << std::endl;
     for (coo::figure* figure: figures) {
       figure->calc_points(lancer);
     }

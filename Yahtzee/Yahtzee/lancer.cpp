@@ -9,11 +9,6 @@
 
 namespace coo {
 
-  std::ostream& operator<<(std::ostream& out, const de& de) {
-    out << graphique::affiche_de(de) << std::endl;
-    return out;
-  }
-
   lancer::lancer() : m_occurence(de::nombre_faces, 0) {
     for (int i = 0; i < nombre_des; ++i) {
       m_des.push_back(new de);
@@ -63,9 +58,26 @@ namespace coo {
   }
 
   std::ostream &operator<<(std::ostream &out, const lancer &lancer) {
+    for (int i = 0; i < lancer::nombre_des; ++i) {
+      out << graphique::separateur_des << "   ";
+    }
+    out << std::endl;
+    for (int n = 0; n < 3; ++n) {
+      for (int i = 0; i < lancer::nombre_des; ++i) {
+        out << "|";
+        for (int j = 0; j < 3; ++j) {
+          out << graphique::rond_de[lancer.m_des[i]->valeur() - 1][n * 3 + j];
+        }
+        out << "|   ";
+      }
+      out << std::endl;
+    }
+    for (int i = 0; i < lancer::nombre_des; ++i) {
+      out << graphique::separateur_des << "   ";
+    }
+    out << std::endl;
     for (int i = 1; i <= lancer::nombre_des; ++i) {
-      out << i << ") " << std::endl
-          << *lancer.m_des[i - 1] << std::endl;
+      out << "De " << i << "    ";
     }
     return out;
   }

@@ -13,8 +13,10 @@ namespace coo {
   class figure;
 
   class graphique {
-    static constexpr char separateur[] = "-----------------------------------";
-    static constexpr char rond_de[de::val_max][9] = {
+    static constexpr char separateur_figures[] = "-----------------------------------";
+  public:
+    static constexpr char separateur_des[] = "-----";
+    static constexpr char rond_de[de::nombre_faces][9] = {
       {' ', ' ', ' ', ' ', 'o', ' ', ' ', ' ', ' '},
       {'o', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'o'},
       {'o', ' ', ' ', ' ', 'o', ' ', ' ', ' ', 'o'},
@@ -22,11 +24,8 @@ namespace coo {
       {'o', ' ', 'o', ' ', 'o', ' ', 'o', ' ', 'o'},
       {'o', ' ', 'o', 'o', ' ', 'o', 'o', ' ', 'o'},
     };
-  public:
     static void pause();
     static void efface();
-    static void change_curseur_pos(short, short);
-    static std::string affiche_de(const de&);
     static void affiche_figures(coo::figure**);
   };
 

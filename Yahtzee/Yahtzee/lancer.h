@@ -18,11 +18,7 @@ namespace coo {
     void lance() { m_valeur = val_min + std::rand() % val_max; }
 
     int valeur() const { return m_valeur; }
-
-    friend std::ostream& operator<<(std::ostream&, const de&);
   };
-
-  std::ostream& operator<<(std::ostream&, const de&);
 
   class lancer {
   public:
