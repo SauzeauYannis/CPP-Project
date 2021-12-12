@@ -16,19 +16,10 @@ namespace coo {
     figure_superieure(const std::string& nom)
       : figure(partie::partie_superieur, nom) {}
 
-    void calc_points(const lancer&) override;
-  };
-
-  template <int valeur_des>
-  void figure_superieure<valeur_des>::calc_points(const lancer &lancer) {
-    int sum = 0;
-    for (int i = 0; i < lancer::nombre_des; ++i) {
-      if (lancer[i].valeur() == valeur_des) {
-        sum += valeur_des;
-      }
+    void calc_points(const lancer& lancer) override {
+      m_points = lancer[valeur_des - 1] * valeur_des;
     }
-    m_points = sum;
-  }
+  };
 
 } // namespace coo
 

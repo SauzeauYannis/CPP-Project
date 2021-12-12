@@ -14,8 +14,8 @@ namespace coo {
     return out;
   }
 
-  lancer::lancer() {
-    for (int i = 1; i <= nombre_des; ++i) {
+  lancer::lancer() : m_occurence(de::nombre_faces, 0) {
+    for (int i = 0; i < nombre_des; ++i) {
       m_des.push_back(new de);
     }
   }
@@ -36,21 +36,23 @@ namespace coo {
   }
 
   void lancer::tout_lancer() {
+    m_occurence.assign(de::nombre_faces, 0);
     m_somme_des = 0;
     for (de * de : m_des) {
       de->lance();
       m_somme_des += de->valeur();
+      m_occurence[de->valeur() - 1]++;
     }
-    trier();
   }
 
   void lancer::lancer_des(const std::vector<int>& des_num) {
     for (const int num : des_num) {
       m_somme_des -= m_des[num - 1]->valeur();
+      m_occurence[m_des[num - 1]->valeur() - 1]--;
       m_des[num - 1]->lance();
       m_somme_des += m_des[num - 1]->valeur();
+      m_occurence[m_des[num - 1]->valeur() - 1]++;
     }
-    trier();
   }
 
   void lancer::trier() {

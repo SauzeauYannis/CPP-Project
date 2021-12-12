@@ -23,10 +23,10 @@ int main() {
     new coo::figure_des_egaux<3>("Brelan"),
     new coo::suite<4>("Petite suite", 30),
     new coo::suite<5>("Grande suite", 40),
-    new coo::full,
+    new coo::figure_des_egaux<3, 2>("Full", 25),
     new coo::figure_des_egaux<4>("Carre"),
     new coo::figure_des_egaux<5>("Yahtzee", 50),
-    new coo::chance
+    new coo::figure_des_egaux<0>("Chance")
   };
 
   coo::lancer lancer;

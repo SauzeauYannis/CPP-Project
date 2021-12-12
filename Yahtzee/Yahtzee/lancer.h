@@ -13,6 +13,7 @@ namespace coo {
   public:
     static constexpr int val_min = 1;
     static constexpr int val_max = 6;
+    static constexpr int nombre_faces = val_max - val_min + 1;
 
     void lance() { m_valeur = val_min + std::rand() % val_max; }
 
@@ -24,13 +25,14 @@ namespace coo {
   std::ostream& operator<<(std::ostream&, const de&);
 
   class lancer {
-    unsigned int m_somme_des = 0;
-    std::vector<de *> m_des;
-
-    void trier();
   public:
     static constexpr int nombre_des = 5;
+  private:
+    unsigned int m_somme_des = 0;
+    std::vector<de *> m_des;
+    std::vector<int> m_occurence;
 
+  public:
     lancer();
     lancer(const lancer&);
     ~lancer();
@@ -39,10 +41,11 @@ namespace coo {
 
     void tout_lancer();
     void lancer_des(const std::vector<int> &);
+    void trier();
 
     unsigned int somme_des() const { return m_somme_des; }
 
-    de& operator[](int de_pos) const { return *m_des[de_pos]; }
+    int operator[](const int de_pos) const { return m_occurence[de_pos]; }
 
     friend std::ostream &operator<<(std::ostream &, const lancer &);
   };

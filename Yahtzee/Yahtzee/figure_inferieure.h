@@ -10,15 +10,7 @@ namespace coo {
 
   class figure_inferieure : public figure {
   public:
-    figure_inferieure() : figure(partie::partie_inferieur, "Full") {} // Default constructor for full
     figure_inferieure(const std::string& nom) : figure(partie::partie_inferieur, nom) {}
-  };
-
-  class chance : public figure_inferieure {
-  public:
-    chance() : figure_inferieure("Chance") {}
-
-    void calc_points(const lancer& lancer) override { m_points = lancer.somme_des(); }
   };
 
   template <int longueur_suite>
@@ -31,7 +23,7 @@ namespace coo {
     void calc_points(const lancer &) override;
   };
 
-  template <int nombre_des_egaux, int nombre_de_fois = 1>
+  template <int nombre_des_egaux, int nombre_des_egaux_2 = 0>
   class figure_des_egaux : virtual public figure_inferieure {
     const unsigned int m_points_a_gagner;
   public:
@@ -41,60 +33,42 @@ namespace coo {
     void calc_points(const lancer &) override;
   };
 
-  class brelan : public figure_des_egaux<3> {
-  public:
-    brelan() : figure_des_egaux<3>("") {}
-  };
-
-  class double_paire : public figure_des_egaux<2, 2> {
-  public:
-    double_paire() : figure_des_egaux<2, 2>("") {}
-  };
-
-  class full : public brelan, public double_paire {
-  public:
-    void calc_points(const lancer &) override;
-  };
-
   /*************
    * functions *
    *************/
 
   template <int longueur_suite>
   void suite<longueur_suite>::calc_points(const lancer &lancer) {
-    unsigned int cpt = 1;
+    unsigned int cpt = 0;
 
-    for (int numero_de = 0; numero_de < static_cast<int>(lancer::nombre_des) - 1; numero_de++) {
-      if (lancer[numero_de].valeur() + 1 == lancer[numero_de + 1].valeur()) {
+    for (int face = 0; face < de::nombre_faces; ++face) {
+      if (lancer[face] > 0) {
         cpt++;
         if (cpt == longueur_suite) {
           m_points = m_points_a_gagner;
           return;
         }
-      } else if (lancer[numero_de].valeur() != lancer[numero_de + 1].valeur()) {
-        cpt = 1;
+      } else {
+        cpt = 0;
       }
     }
     m_points = 0;
   }
 
-  template <int nombre_des_egaux, int nombre_de_fois>
-  void figure_des_egaux<nombre_des_egaux, nombre_de_fois>::calc_points(const lancer &lancer) {
-    int nb_fois = nombre_de_fois;
-    unsigned int cpt = 1;
+  template <int nombre_des_egaux, int nombre_des_egaux_2>
+  void figure_des_egaux<nombre_des_egaux, nombre_des_egaux_2>::calc_points(const lancer &lancer) {
+    bool nb_egaux = false;
+    bool nb_egaux_2 = false;
 
-    for (int numero_de = 0; numero_de < static_cast<int>(lancer::nombre_des) - 1; numero_de++) {
-      if (lancer[numero_de].valeur() == lancer[numero_de + 1].valeur()) {
-        cpt++;
-        if (cpt == nombre_des_egaux) {
-          m_points = m_points_a_gagner == 0 ? lancer.somme_des() : m_points_a_gagner;
-          --nb_fois;
-          if (nb_fois == 0) return;
-          while (numero_de + 1 < lancer::nombre_des && lancer[numero_de].valeur() == lancer[numero_de + 1].valeur()) ++numero_de;
-        }
+    for (int face = 0; face < de::nombre_faces; ++face) {
+      if (!nb_egaux && lancer[face] >= nombre_des_egaux) {
+        nb_egaux = true;
+      } else if (lancer[face] >= nombre_des_egaux_2) {
+        nb_egaux_2 = true;
       }
-      else {
-        cpt = 1;
+      if (nb_egaux && nb_egaux_2) {
+        m_points = m_points_a_gagner == 0 ? lancer.somme_des() : m_points_a_gagner;
+        return;
       }
     }
     m_points = 0;
