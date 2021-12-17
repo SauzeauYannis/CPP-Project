@@ -3,6 +3,7 @@
 #ifndef FIGURE_H_
 #define FIGURE_H_
 
+#include <array>
 #include <iostream>
 
 #include "lancer.h"
@@ -30,6 +31,8 @@ namespace coo {
     void est_choisie() { m_est_realisee = true; }
 
     friend std::ostream& operator<<(std::ostream&, const figure&);
+
+    static std::array<figure*, nombre_figures> init_figures();
   };
 
   std::ostream& operator<<(std::ostream&, const figure&);

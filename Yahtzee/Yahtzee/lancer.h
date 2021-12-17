@@ -23,6 +23,7 @@ namespace coo {
   class lancer {
   public:
     static constexpr int nombre_des = 5;
+    static constexpr int nombre_jets = 3;
   private:
     unsigned int m_somme_des = 0;
     std::vector<de *> m_des;

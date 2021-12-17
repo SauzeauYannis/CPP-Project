@@ -26,7 +26,7 @@ namespace coo {
     };
     static void pause();
     static void efface();
-    static void affiche_figures(coo::figure**);
+    static void affiche_figures(std::array<figure*, figure::nombre_figures> figures);
   };
 
 } // namespace coo

@@ -3,11 +3,25 @@
 #ifndef JOUEUR_H_
 #define JOUEUR_H_
 
+#include <array>
+#include <iostream>
+
+#include "figure.h"
+#include "lancer.h"
+
 namespace coo {
 
   class joueur {
+    const std::string m_nom;
+    std::array<figure*, figure::nombre_figures> m_figures;
+    lancer* m_lancer;
+
+    static int choix_action();
   public:
-    joueur();
+    joueur(const std::string &nom, lancer *lancer)
+      : m_nom(nom), m_figures(figure::init_figures()), m_lancer(lancer) {}
+
+    void joue_tour();
   };
 
 } // namespace coo

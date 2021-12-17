@@ -1,3 +1,6 @@
-﻿  main.cpp
-D:\OneDrive - Université de Poitiers\Documents\2021-2022_M1_IM_S7\COO\Projet\Yahtzee\Yahtzee\main.cpp(14,23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  jeu.cpp
+  joueur.cpp
+  main.cpp
+D:\OneDrive - Université de Poitiers\Documents\2021-2022_M1_IM_S7\COO\Projet\Yahtzee\Yahtzee\main.cpp(10,23): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
   Yahtzee.vcxproj -> D:\OneDrive - Université de Poitiers\Documents\2021-2022_M1_IM_S7\COO\Projet\Yahtzee\x64\Debug\Yahtzee.exe

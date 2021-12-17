@@ -1,5 +1,6 @@
 // Created by Abel Amouh and Yannis Sauzeau on 03-Dec-21
 
+#include <array>
 #include <cstdlib>
 #include <iomanip>
 
@@ -25,7 +26,7 @@ namespace coo {
 #endif
   }
 
-  void graphique::affiche_figures(coo::figure **figures) {
+  void graphique::affiche_figures(std::array<figure*, figure::nombre_figures> figures) {
     std::cout << separateur_figures << std::endl;
     std::cout << "|Choix|Combinaisons|Points|Realise|" << std::endl;
     std::cout << separateur_figures << std::endl;

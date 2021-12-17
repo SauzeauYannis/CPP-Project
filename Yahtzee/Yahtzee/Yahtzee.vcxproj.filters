@@ -36,6 +36,9 @@
     <ClCompile Include="figure_inferieure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="jeu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="figure.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="figure_inferieure.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jeu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
