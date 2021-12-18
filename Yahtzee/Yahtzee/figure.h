@@ -28,7 +28,11 @@ namespace coo {
 
     virtual void calc_points(const lancer&) = 0;
 
-    void est_choisie() { m_est_realisee = true; }
+    void choisir() { m_est_realisee = true; }
+
+    bool est_choisie() const { return m_est_realisee; }
+    unsigned int points() const { return m_points; }
+    partie partie() const { return m_partie; }
 
     friend std::ostream& operator<<(std::ostream&, const figure&);
 

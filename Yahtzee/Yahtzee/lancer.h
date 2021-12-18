@@ -4,6 +4,7 @@
 #define LANCER_H_
 
 #include <iostream>
+#include <set>
 #include <vector>
 
 namespace coo {
@@ -37,7 +38,7 @@ namespace coo {
     lancer &operator=(const lancer&);
 
     void tout_lancer();
-    void lancer_des(const std::vector<int> &);
+    void lancer_des(const std::set<int> &);
     void trier();
 
     unsigned int somme_des() const { return m_somme_des; }

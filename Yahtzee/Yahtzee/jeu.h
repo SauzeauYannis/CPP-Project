@@ -11,6 +11,7 @@
 namespace coo {
 
   class jeu {
+    int m_nb_manches;
     std::vector<joueur*> m_joueurs;
     lancer* m_lancer;
   public:
@@ -20,7 +21,7 @@ namespace coo {
 
     jeu& operator=(const jeu&);
 
-    auto joue_manche() const -> void;
+    void joue_manche();
   };
 
 } // namespace coo

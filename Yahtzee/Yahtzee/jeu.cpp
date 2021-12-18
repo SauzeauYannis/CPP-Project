@@ -1,8 +1,12 @@
 #include "jeu.h"
 
+#include <string>
+
+#include "figure.h"
+
 namespace coo {
 
-  jeu::jeu() : m_lancer(new lancer) {
+  jeu::jeu() : m_nb_manches(figure::nombre_figures), m_lancer(new lancer) {
 
     // TODO Demander le nombre de joueur
 
@@ -30,9 +34,15 @@ namespace coo {
     return *this;
   }
 
-  void jeu::joue_manche() const {
-    for (joueur * joueur : m_joueurs) {
-      joueur->joue_tour();
+  void jeu::joue_manche() {
+    while (m_nb_manches > 0) {
+      m_nb_manches--;
+      std::cout << "Manche numero " << std::to_string(figure::nombre_figures - m_nb_manches)
+                << std::endl << std::endl;
+
+      for (joueur* joueur : m_joueurs) {
+        joueur->joue_tour();
+      }
     }
   }
 }

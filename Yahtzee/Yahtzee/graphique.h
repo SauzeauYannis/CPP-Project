@@ -3,8 +3,6 @@
 #ifndef GRAPHIQUE_H_
 #define GRAPHIQUE_H_
 
-#include <iostream>
-
 #include "figure.h"
 #include "lancer.h"
 
@@ -26,7 +24,9 @@ namespace coo {
     };
     static void pause();
     static void efface();
+    static void pause_et_efface();
     static void affiche_figures(std::array<figure*, figure::nombre_figures> figures);
+    static int demande_choix(int, int);
   };
 
 } // namespace coo

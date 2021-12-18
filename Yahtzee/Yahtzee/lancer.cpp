@@ -1,8 +1,6 @@
 // Created by Abel Amouh and Yannis Sauzeau on 03-Dec-21
 
-#include <iostream>
 #include <algorithm>
-#include <string>
 
 #include "graphique.h"
 #include "lancer.h"
@@ -20,7 +18,7 @@ namespace coo {
   }
 
   lancer::~lancer() {
-    for (de * de : m_des) {
+    for (const de * de : m_des) {
       delete de;
     }
   }
@@ -40,8 +38,9 @@ namespace coo {
     }
   }
 
-  void lancer::lancer_des(const std::vector<int>& des_num) {
+  void lancer::lancer_des(const std::set<int>& des_num) {
     for (const int num : des_num) {
+      std::cout << num << std::endl;
       m_somme_des -= m_des[num - 1]->valeur();
       m_occurence[m_des[num - 1]->valeur() - 1]--;
       m_des[num - 1]->lance();
