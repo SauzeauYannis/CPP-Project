@@ -5,6 +5,7 @@
 
 #include <array>
 #include <iostream>
+#include <vector>
 
 #include "figure.h"
 #include "lancer.h"
@@ -15,6 +16,8 @@ namespace coo {
     const std::string m_nom;
     std::array<figure*, figure::nombre_figures> m_figures;
     lancer* m_lancer;
+    std::vector <int> deARelancer;
+    int num_de=0;
 
     static int choix_action();
   public:

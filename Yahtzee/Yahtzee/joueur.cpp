@@ -2,6 +2,8 @@
 
 #include "graphique.h"
 
+#include<conio.h>
+
 namespace coo {
 
   void joueur::joue_tour() {
@@ -24,6 +26,26 @@ namespace coo {
       std::cout << std::endl << "Il vous reste " << lancer::nombre_jets - i << " jets !" << std::endl << std::endl;
 
       // TODO Faire un switch avec le choix et faire le traitement pour chaque situation
+
+     /* switch (choix_action())
+      {
+      case 1:
+          m_lancer->tout_lancer();
+          break;
+      case 2:
+          std::cout << "Veuillez entrer les des a relancer" << std::endl;         
+
+          while (std::cin.get()!= '\n')
+          {
+              std::cin >> num_de;
+              deARelancer.push_back(num_de);
+          }
+
+          m_lancer->lancer_des(deARelancer);
+          break;
+      case 3:
+
+      };*/
 
       std::cout << "Vous avez choisi " << choix_action() << std::endl;
 
