@@ -5,7 +5,6 @@
 
 #include <array>
 #include <iostream>
-#include <vector>
 
 #include "figure.h"
 #include "lancer.h"
@@ -21,8 +20,6 @@ namespace coo {
     unsigned int m_points;
     std::array<figure*, figure::nombre_figures> m_figures;
     lancer* m_lancer;
-    std::vector <int> deARelancer;
-    int num_de=0;
 
     void choisi_figure();
     void relance_de() const;

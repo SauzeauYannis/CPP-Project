@@ -2,33 +2,27 @@
 
 #include <string>
 
+#include "graphique.h"
 #include "figure.h"
 
 namespace coo {
 
-  jeu::jeu() : m_nb_manches(figure::nombre_figures), m_lancer(new lancer) {
+  jeu::jeu()
+    : m_nb_manches(figure::nombre_figures), m_lancer(new lancer) {
+    std::cout << "Veuillez renseigner le nombre de joueurs (8 max)" << std::endl << std::endl;
 
-    // TODO Demander le nombre de joueur
-      std::cout << "Veuillez renseigner le nombre de joueurs " << std::endl;
+    m_nb_joueurs = graphique::demande_choix(1, 8);
 
-      std::cin >> nbJoueurs;
+    std::string nom;
 
-    // TODO Pour chaque joueur demander un nom
-          for (int it = 0; it < jeu::nbJoueurs; ++it) {
-              std::cout << "Veuillez renseigner le nom du joueur " << it + 1 << std::endl;
-              std::cin >> nomJoueur;
+    for (int i = 1; i <= m_nb_joueurs; ++i) {
+        std::cout << std::endl << "Veuillez renseigner le nom du joueur " << i << std::endl;
+        std::cin >> nom;
 
-              // TODO Init les joueurs avec le nom qu'ils ont demandé
-              m_joueurs.push_back(new joueur(nomJoueur, m_lancer));
-          }
+        m_joueurs.push_back(new joueur(nom, m_lancer));
+    }
 
-    
-
-    /*m_joueurs = {
-      new joueur("Abel", m_lancer),
-      new joueur("Yannis", m_lancer)
-    };*/
-
+    graphique::efface();
   }
 
   jeu::jeu(const jeu &jeu) {

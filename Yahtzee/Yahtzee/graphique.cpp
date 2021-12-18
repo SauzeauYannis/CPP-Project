@@ -3,6 +3,7 @@
 #include <array>
 #include <cstdlib>
 #include <iomanip>
+#include <string>
 
 #include "graphique.h"
 
@@ -45,7 +46,7 @@ namespace coo {
   int graphique::demande_choix(const int min, const int max) {
     int choix = min - 1;
     do {
-      std::cout << "Votre choix ? ";
+      std::cout << "Votre choix ? (entre " << std::to_string(min) << " et " << std::to_string(max) << ") ";
       std::cin >> choix;
     } while (choix < min || choix > max);
     return choix;

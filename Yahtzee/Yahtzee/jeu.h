@@ -4,7 +4,6 @@
 #define JEU_H_
 
 #include <vector>
-#include<string>
 
 #include "lancer.h"
 #include "joueur.h"
@@ -13,10 +12,9 @@ namespace coo {
 
   class jeu {
     int m_nb_manches;
+    int m_nb_joueurs;
     std::vector<joueur*> m_joueurs;
     lancer* m_lancer;
-    int nbJoueurs;
-    std::string nomJoueur;
   public:
     jeu();
     jeu(const jeu&);
