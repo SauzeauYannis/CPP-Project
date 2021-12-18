@@ -3,6 +3,7 @@
 #ifndef JEU_H_
 #define JEU_H_
 
+#include <memory>
 #include <vector>
 
 #include "lancer.h"
@@ -12,17 +13,13 @@ namespace coo {
 
   class jeu {
     int m_nb_manches;
-    int m_nb_joueurs;
-    std::vector<joueur*> m_joueurs;
-    lancer* m_lancer;
+    std::vector<std::unique_ptr<joueur>> m_joueurs;
+    std::shared_ptr<lancer> m_lancer;
   public:
     jeu();
-    jeu(const jeu&);
-    ~jeu();
 
-    jeu& operator=(const jeu&);
-
-    void joue_manche();
+    void joue();
+    void fin();
   };
 
 } // namespace coo

@@ -3,6 +3,9 @@
 #ifndef GRAPHIQUE_H_
 #define GRAPHIQUE_H_
 
+#include <array>
+#include <memory>
+
 #include "figure.h"
 #include "lancer.h"
 
@@ -25,8 +28,9 @@ namespace coo {
     static void pause();
     static void efface();
     static void pause_et_efface();
-    static void affiche_figures(std::array<figure*, figure::nombre_figures> figures);
+    static void affiche_figures(const std::array<std::unique_ptr<figure>, figure::nombre_figures> &figures);
     static int demande_choix(int, int);
+    static char demande_oui_non();
   };
 
 } // namespace coo

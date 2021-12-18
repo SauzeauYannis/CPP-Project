@@ -140,8 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="figure.cpp" />
-    <ClCompile Include="figure_inferieure.cpp" />
-    <ClCompile Include="figure_superieure.cpp" />
     <ClCompile Include="graphique.cpp" />
     <ClCompile Include="jeu.cpp" />
     <ClCompile Include="joueur.cpp" />

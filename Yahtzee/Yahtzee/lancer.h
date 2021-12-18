@@ -3,20 +3,27 @@
 #ifndef LANCER_H_
 #define LANCER_H_
 
-#include <iostream>
+#include <memory>
+#include <ostream>
+#include <random>
 #include <set>
 #include <vector>
 
 namespace coo {
 
   class de {
-    int m_valeur = 0;
   public:
     static constexpr int val_min = 1;
     static constexpr int val_max = 6;
     static constexpr int nombre_faces = val_max - val_min + 1;
+  private:
+    static std::mt19937 generateur;
+    static std::uniform_int_distribution<> alea;
+    int m_valeur;
+  public:
+    de() : m_valeur(0) {}
 
-    void lance() { m_valeur = val_min + std::rand() % val_max; }
+    void lance() { m_valeur = alea(generateur); }
 
     int valeur() const { return m_valeur; }
   };
@@ -26,20 +33,15 @@ namespace coo {
     static constexpr int nombre_des = 5;
     static constexpr int nombre_jets = 3;
   private:
-    unsigned int m_somme_des = 0;
-    std::vector<de *> m_des;
+    unsigned int m_somme_des;
+    std::vector<std::unique_ptr<de>> m_des;
     std::vector<int> m_occurence;
 
   public:
     lancer();
-    lancer(const lancer&);
-    ~lancer();
-
-    lancer &operator=(const lancer&);
 
     void tout_lancer();
     void lancer_des(const std::set<int> &);
-    void trier();
 
     unsigned int somme_des() const { return m_somme_des; }
 

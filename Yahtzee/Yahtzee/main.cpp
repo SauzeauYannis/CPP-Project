@@ -1,17 +1,29 @@
 // Created by Abel Amouh and Yannis Sauzeau on 03-Dec-21
 
-#include <ctime>
 #include <iostream>
 
+#include "graphique.h"
 #include "jeu.h"
 
 int main() {
 
-  std::srand(std::time(nullptr));
+  do {
+    coo::graphique::efface();
+    coo::jeu *jeu = new coo::jeu;
+    jeu->joue();
+    delete jeu;
 
-  coo::jeu jeu;
+    coo::graphique::pause_et_efface();
+    std::cout << "Voulez-vous relancer une partie ? (oui ou non) ";
+  }
+  while (coo::graphique::demande_oui_non() == 'o');
 
-  jeu.joue_manche();
+  coo::graphique::efface();
 
-  return 0;
+  std::cout << "Merci d'avoir joue a ce jeu !" << std::endl << std::endl;
+  std::cout << "Jeu cree par Abel Amouh et Yannis Sauzeau" << std::endl << std::endl;
+
+  coo::graphique::pause_et_efface();
+
+  return EXIT_SUCCESS;
 }

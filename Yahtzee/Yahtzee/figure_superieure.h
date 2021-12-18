@@ -3,20 +3,20 @@
 #ifndef FIGURE_PARTIE_INF_H_
 #define FIGURE_PARTIE_INF_H_
 
+#include <iostream>
+
 #include "figure.h"
 #include "lancer.h"
 
 namespace coo {
 
   template <int valeur_des>
-  class figure_superieure : public figure {
+  class figure_superieure final : public figure {
   public:
-    static constexpr int nombre_figure = 6;
-
-    figure_superieure(const std::string& nom)
+    explicit figure_superieure(const std::string &nom)
       : figure(partie::partie_superieur, nom) {}
 
-    void calc_points(const lancer& lancer) override {
+    void calc_points(const lancer &lancer) override {
       m_points = lancer[valeur_des - 1] * valeur_des;
     }
   };

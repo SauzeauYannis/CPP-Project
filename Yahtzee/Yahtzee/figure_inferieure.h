@@ -3,6 +3,8 @@
 #ifndef FIGURE_INFERIEURE_H_
 #define FIGURE_INFERIEURE_H_
 
+#include <iostream>
+
 #include "figure.h"
 #include "lancer.h"
 
@@ -10,24 +12,25 @@ namespace coo {
 
   class figure_inferieure : public figure {
   public:
-    figure_inferieure(const std::string& nom) : figure(partie::partie_inferieur, nom) {}
+    explicit figure_inferieure(const std::string &nom)
+      : figure(partie::partie_inferieur, nom) {}
   };
 
   template <int longueur_suite>
-  class suite : public figure_inferieure {
+  class suite final : public figure_inferieure {
     const unsigned int m_points_a_gagner;
   public:
-    suite(const std::string&nom, int points_a_gagner)
+    suite(const std::string &nom, const int points_a_gagner)
       : figure_inferieure(nom), m_points_a_gagner(points_a_gagner) {}
 
     void calc_points(const lancer &) override;
   };
 
   template <int nombre_des_egaux, int nombre_des_egaux_2 = 0>
-  class figure_des_egaux : virtual public figure_inferieure {
+  class figure_des_egaux final : virtual public figure_inferieure {
     const unsigned int m_points_a_gagner;
   public:
-    figure_des_egaux(const std::string& nom, int point_a_gagner = 0)
+    explicit figure_des_egaux(const std::string &nom, const int point_a_gagner = 0)
       : figure_inferieure(nom), m_points_a_gagner(point_a_gagner) {}
 
     void calc_points(const lancer &) override;

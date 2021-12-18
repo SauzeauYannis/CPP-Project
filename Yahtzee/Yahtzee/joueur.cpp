@@ -24,19 +24,19 @@ namespace coo {
       std::cout << "3) Construire une figure a partir de ce lancer" << std::endl << std::endl;
 
       switch (graphique::demande_choix(1, 3)) {
-      case 1:
-        m_lancer->tout_lancer();
-        break;
-      case 2:
-        relance_de();
-        break;
-      case 3:
-        choisi_figure();
-        graphique::efface();
-        return;
-      default:
-        // TODO Lever une excpetion
-        throw 1;
+        case 1:
+          m_lancer->tout_lancer();
+          break;
+        case 2:
+          relance_de();
+          break;
+        case 3:
+          choisi_figure();
+          graphique::efface();
+          return;
+        default:
+          // TODO Lever une excpetion
+          throw 1;
       }
 
       graphique::efface();
@@ -51,21 +51,23 @@ namespace coo {
     graphique::efface();
   }
 
+  std::ostream &operator<<(std::ostream &out, const joueur &joueur) {
+    out << joueur.m_nom << " avec " << std::to_string(joueur.m_points) << " points";
+    return out;
+  }
+
   void joueur::choisi_figure() {
     std::cout << "Quelle figure voulez-vous construire ?" << std::endl;
     int choix_figure = 0;
-    figure* figure_choisie;
     do {
       choix_figure = graphique::demande_choix(1, figure::nombre_figures);
-      figure_choisie = m_figures[choix_figure - 1];
-    } while (figure_choisie->est_choisie());
-    figure_choisie->choisir();
-    m_points += figure_choisie->points();
-    if (figure_choisie->partie() == partie::partie_superieur) {
-      m_points_restant_pour_prime -= figure_choisie->points();
-      if (m_points_restant_pour_prime <= 0) {
-        m_points += points_prime;
-      }
+    }
+    while (m_figures[choix_figure - 1]->est_choisie());
+    m_figures[choix_figure - 1]->choisir();
+    m_points += m_figures[choix_figure - 1]->points();
+    if (m_figures[choix_figure - 1]->partie() == partie::partie_superieur) {
+      m_points_restant_pour_prime -= static_cast<int>(m_figures[choix_figure - 1]->points());
+      if (m_points_restant_pour_prime <= 0) m_points += points_prime;
     }
   }
 
@@ -73,16 +75,18 @@ namespace coo {
     std::cout << "Le resultat de votre lancer est le suivant:" << std::endl << std::endl;
     std::cout << *m_lancer << std::endl << std::endl;
 
-    for (figure* figure : m_figures) {
+    for (const std::unique_ptr<figure> &figure : m_figures) {
       if (!figure->est_choisie()) {
         figure->calc_points(*m_lancer);
       }
     }
     graphique::affiche_figures(m_figures);
 
-    std::cout << std::endl << (m_points_restant_pour_prime > 0 ? 
-      "Il vous manque " + std::to_string(m_points_restant_pour_prime) + " point(s) pour obtenir " : "Vous avez obtenu ")
-      << "la prime de " + std::to_string(points_prime) << " points" << std::endl;
+    std::cout << std::endl
+              << (m_points_restant_pour_prime > 0
+              ? "Il vous manque " + std::to_string(m_points_restant_pour_prime) + " point(s) pour obtenir "
+              : "Vous avez obtenu ")
+              << "la prime de " + std::to_string(points_prime) << " points" << std::endl;
     std::cout << "Total de vos points = " << std::to_string(m_points) << std::endl << std::endl;
   }
 
@@ -91,8 +95,7 @@ namespace coo {
     const int choix_relance = graphique::demande_choix(1, lancer::nombre_des);
     if (choix_relance == lancer::nombre_des) {
       m_lancer->tout_lancer();
-    }
-    else {
+    } else {
       std::set<int> des_a_relancer;
       for (int j = 0; j < choix_relance; ++j) {
         std::cout << "Quel numero de de voulez-vous relancer ?" << std::endl;

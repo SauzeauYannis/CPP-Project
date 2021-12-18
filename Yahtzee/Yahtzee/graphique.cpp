@@ -1,7 +1,8 @@
 // Created by Abel Amouh and Yannis Sauzeau on 03-Dec-21
 
-#include <array>
 #include <cstdlib>
+#include <cctype>
+#include <iostream>
 #include <iomanip>
 #include <string>
 
@@ -32,7 +33,7 @@ namespace coo {
     efface();
   }
 
-  void graphique::affiche_figures(std::array<figure*, figure::nombre_figures> figures) {
+  void graphique::affiche_figures(const std::array<std::unique_ptr<figure>, figure::nombre_figures> &figures) {
     std::cout << separateur_figures << std::endl;
     std::cout << "|Choix|Combinaisons|Points|Realise|" << std::endl;
     std::cout << separateur_figures << std::endl;
@@ -50,6 +51,15 @@ namespace coo {
       std::cin >> choix;
     } while (choix < min || choix > max);
     return choix;
+  }
+
+  char graphique::demande_oui_non() {
+    std::string oui_ou_non;
+    do {
+      std::cin >> oui_ou_non;
+    } while (std::tolower(oui_ou_non[0]) != 'o' &&
+             std::tolower(oui_ou_non[0]) != 'n');
+    return static_cast<char>(std::tolower(oui_ou_non[0]));
   }
 
 }
