@@ -5,6 +5,8 @@
 
 #include "graphique.h"
 
+#include<conio.h>
+
 namespace coo {
 
   void joueur::joue_tour() {

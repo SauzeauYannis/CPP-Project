@@ -1,8 +1,4 @@
-﻿  figure.cpp
-  figure_inferieure.cpp
-  figure_superieure.cpp
-  graphique.cpp
-  jeu.cpp
+﻿  jeu.cpp
   joueur.cpp
   lancer.cpp
   main.cpp
