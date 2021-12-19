@@ -14,7 +14,7 @@ int main() {
     delete jeu;
 
     coo::graphique::pause_et_efface();
-    std::cout << "Voulez-vous relancer une partie ? (oui ou non) ";
+    std::cout << "Voulez-vous relancer une partie ? ";
   }
   while (coo::graphique::demande_oui_non() == 'o');
 

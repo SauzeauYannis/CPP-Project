@@ -21,7 +21,7 @@ namespace coo {
     static std::uniform_int_distribution<> alea;
     int m_valeur;
   public:
-    de() : m_valeur(0) {}
+    de() : m_valeur(val_min) {}
 
     void lance() { m_valeur = alea(generateur); }
 

@@ -30,7 +30,6 @@ namespace coo {
 
   void lancer::lancer_des(const std::set<int> &des_num) {
     for (const int num : des_num) {
-      std::cout << num << std::endl;
       m_somme_des -= m_des[num - 1]->valeur();
       m_occurence[m_des[num - 1]->valeur() - 1]--;
       m_des[num - 1]->lance();

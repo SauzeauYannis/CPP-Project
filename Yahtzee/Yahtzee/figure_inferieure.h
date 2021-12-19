@@ -11,27 +11,27 @@
 namespace coo {
 
   class figure_inferieure : public figure {
+  protected:
+    const unsigned int m_points_a_gagner;
   public:
-    explicit figure_inferieure(const std::string &nom)
-      : figure(partie::partie_inferieur, nom) {}
+    explicit figure_inferieure(const std::string &nom, const int points_a_gagner)
+      : figure(partie::partie_inferieur, nom), m_points_a_gagner(points_a_gagner) {}
   };
 
   template <int longueur_suite>
   class suite final : public figure_inferieure {
-    const unsigned int m_points_a_gagner;
   public:
     suite(const std::string &nom, const int points_a_gagner)
-      : figure_inferieure(nom), m_points_a_gagner(points_a_gagner) {}
+      : figure_inferieure(nom, points_a_gagner) {}
 
     void calc_points(const lancer &) override;
   };
 
   template <int nombre_des_egaux, int nombre_des_egaux_2 = 0>
   class figure_des_egaux final : virtual public figure_inferieure {
-    const unsigned int m_points_a_gagner;
   public:
-    explicit figure_des_egaux(const std::string &nom, const int point_a_gagner = 0)
-      : figure_inferieure(nom), m_points_a_gagner(point_a_gagner) {}
+    explicit figure_des_egaux(const std::string &nom, const int points_a_gagner = 0)
+      : figure_inferieure(nom, points_a_gagner) {}
 
     void calc_points(const lancer &) override;
   };

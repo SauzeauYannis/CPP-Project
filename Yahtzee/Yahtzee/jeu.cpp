@@ -5,8 +5,9 @@
 #include <algorithm>
 #include <string>
 
-#include "graphique.h"
 #include "figure.h"
+#include "graphique.h"
+#include "ia.h"
 
 namespace coo {
 
@@ -20,10 +21,15 @@ namespace coo {
 
     for (int i = 1; i <= nb_joueurs; ++i) {
       std::cout << std::endl << "Veuillez renseigner le nom du joueur " << i << " : ";
-      std::cin >> nom;
+      do {
+        std::getline(std::cin, nom);
+      } while (nom.empty());
 
       m_joueurs.push_back(std::make_unique<joueur>(nom, m_lancer));
     }
+
+    if (nb_joueurs == 1)
+      m_joueurs.push_back(std::make_unique<ia>(m_lancer));
 
     graphique::efface();
   }
@@ -35,7 +41,7 @@ namespace coo {
         << std::endl << std::endl;
 
       if (m_nb_manches < figure::nombre_figures - 1) {
-        std::cout << "Voulez-vous continuer a jouer ? (oui ou non) ";
+        std::cout << "Voulez-vous continuer a jouer ? ";
         if (graphique::demande_oui_non() == 'n') {
           graphique::efface();
           fin();

@@ -17,25 +17,30 @@ namespace coo {
     static constexpr int points_pour_prime = 63;
     static constexpr int points_prime = 35;
 
-    const std::string m_nom;
     int m_points_restant_pour_prime;
     unsigned int m_points;
+  protected:
+    const std::string m_nom;
     std::array<std::unique_ptr<figure>, figure::nombre_figures> m_figures;
     std::shared_ptr<lancer> m_lancer;
   public:
+    virtual ~joueur() = default;
+
     joueur(const std::string &nom, const std::shared_ptr<lancer> &lancer)
-      : m_nom(nom), m_points_restant_pour_prime(points_pour_prime),
-        m_points(0), m_figures(figure::init_figures()), m_lancer(lancer) {}
+      : m_points_restant_pour_prime(points_pour_prime), m_points(0),
+        m_nom(nom), m_figures(figure::init_figures()), m_lancer(lancer) {}
 
     unsigned int points() const { return m_points; }
 
-    void joue_tour();
+    virtual void joue_tour();
 
     friend std::ostream &operator<<(std::ostream &, const joueur &);
+  protected:
+    void change_points(int choix_figure);
+    void resultat_lancer() const;
   private:
     void choisi_figure();
     void relance_de() const;
-    void resultat_lancer() const;
   };
 
   std::ostream &operator<<(std::ostream &, const joueur &);

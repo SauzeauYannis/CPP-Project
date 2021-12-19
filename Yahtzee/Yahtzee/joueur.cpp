@@ -30,13 +30,10 @@ namespace coo {
         case 2:
           relance_de();
           break;
-        case 3:
+        default:
           choisi_figure();
           graphique::efface();
           return;
-        default:
-          // TODO Lever une excpetion
-          throw 1;
       }
 
       graphique::efface();
@@ -56,14 +53,7 @@ namespace coo {
     return out;
   }
 
-  void joueur::choisi_figure() {
-    std::cout << "Quelle figure voulez-vous construire ?" << std::endl;
-    int choix_figure = 0;
-    do {
-      choix_figure = graphique::demande_choix(1, figure::nombre_figures);
-    }
-    while (m_figures[choix_figure - 1]->est_choisie());
-    m_figures[choix_figure - 1]->choisir();
+  void joueur::change_points(int choix_figure) {
     m_points += m_figures[choix_figure - 1]->points();
     if (m_figures[choix_figure - 1]->partie() == partie::partie_superieur) {
       m_points_restant_pour_prime -= static_cast<int>(m_figures[choix_figure - 1]->points());
@@ -88,6 +78,16 @@ namespace coo {
               : "Vous avez obtenu ")
               << "la prime de " + std::to_string(points_prime) << " points" << std::endl;
     std::cout << "Total de vos points = " << std::to_string(m_points) << std::endl << std::endl;
+  }
+
+  void joueur::choisi_figure() {
+    std::cout << "Quelle figure voulez-vous construire ?" << std::endl;
+    int choix_figure = 0;
+    do {
+      choix_figure = graphique::demande_choix(1, figure::nombre_figures);
+    } while (m_figures[choix_figure - 1]->est_choisie());
+    m_figures[choix_figure - 1]->choisir();
+    change_points(choix_figure);
   }
 
   void joueur::relance_de() const {

@@ -49,11 +49,17 @@ namespace coo {
     do {
       std::cout << "Votre choix ? (entre " << std::to_string(min) << " et " << std::to_string(max) << ") ";
       std::cin >> choix;
+      while (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore();
+        std::cin >> choix;
+      }
     } while (choix < min || choix > max);
     return choix;
   }
 
   char graphique::demande_oui_non() {
+    std::cout << " oui (o) ou non (n) ";
     std::string oui_ou_non;
     do {
       std::cin >> oui_ou_non;

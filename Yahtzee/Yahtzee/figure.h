@@ -35,6 +35,7 @@ namespace coo {
     bool est_choisie() const { return m_est_realisee; }
     unsigned int points() const { return m_points; }
     partie partie() const { return m_partie; }
+    std::string nom() const { return m_nom; }
 
     static std::array<std::unique_ptr<figure>, nombre_figures> init_figures();
 
