@@ -8,14 +8,15 @@
 
 namespace coo {
 
+  // Ininitialise le generateur de nombre aleatoire
+  // selon une distribution entiere uniforme
   std::mt19937 de::generateur = std::mt19937(std::random_device()());
   std::uniform_int_distribution<> de::alea = std::uniform_int_distribution<>(val_min, val_max);
 
   lancer::lancer()
     : m_somme_des(0), m_occurence(de::nombre_faces, 0) {
-    for (int i = 0; i < nombre_des; ++i) {
+    for (int i = 0; i < nombre_des; ++i)
       m_des.push_back(std::make_unique<de>());
-    }
   }
 
   void lancer::tout_lancer() {
@@ -28,6 +29,8 @@ namespace coo {
     }
   }
 
+  // Fonction qui lance uniquement les des dont les
+  // numeros sont dans **des_num**
   void lancer::lancer_des(const std::set<int> &des_num) {
     for (const int num : des_num) {
       m_somme_des -= m_des[num - 1]->valeur();

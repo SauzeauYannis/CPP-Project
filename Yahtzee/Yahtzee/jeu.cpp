@@ -11,6 +11,10 @@
 
 namespace coo {
 
+  // Initialise le jeu en demandant le nombre de joueurs
+  // - Si 1 joueur alors le joueur joue contre l'ordinateur
+  // - Sinon il joue contre les autres joueurs
+  // Chaque joueur choisit un nom pour commencer a jouer
   jeu::jeu()
     : m_nb_manches(figure::nombre_figures), m_lancer(std::make_shared<lancer>()) {
     std::cout << "Veuillez renseigner le nombre de joueurs (8 max)" << std::endl << std::endl;
@@ -34,6 +38,12 @@ namespace coo {
     graphique::efface();
   }
 
+  // Fonction qui fait jouer chaque joueur chacun leur tour
+  // dans un nombre de manche egal au nombre de figure qu'on
+  // peut realiser
+  // Cette fonction se termine lorsque le nombre de manche
+  // restant est egal a zero ou qu'un joueur decide
+  // d'arreter de jouer
   void jeu::joue() {
     while (m_nb_manches > 0) {
       m_nb_manches--;
@@ -49,13 +59,22 @@ namespace coo {
         }
         graphique::efface();
       }
-      for (const std::unique_ptr<joueur> &joueur : m_joueurs)
+      for (const std::unique_ptr<joueur> &joueur : m_joueurs) {
+        std::cout << *joueur << " c'est a votre tour de lancer les des" << std::endl << std::endl;
+
+        graphique::pause_et_efface();
+
         joueur->joue_tour();
+
+        graphique::pause_et_efface();
+      }
     }
 
     fin();
   }
 
+  // Fonction qui affiche le classement des joueurs dans l'ordre
+  // décroissant de leur points
   void jeu::fin() {
     std::sort(m_joueurs.begin(), m_joueurs.end(),
               [](const std::unique_ptr<joueur> &j1, const std::unique_ptr<joueur>&j2) {
@@ -66,7 +85,8 @@ namespace coo {
     std::cout << "Le classement est :" << std::endl;
 
     for (size_t i = 1; i <= m_joueurs.size(); ++i)
-      std::cout << std::to_string(i) << ") " << *m_joueurs[i - 1] << std::endl;
+      std::cout << std::to_string(i) << ") " << *m_joueurs[i - 1]
+                << " avec " << m_joueurs[i - 1]->points() << " points" << std::endl;
 
     std::cout << std::endl;
   }

@@ -10,11 +10,14 @@
 
 namespace coo {
 
+  // Classe patron qui represente une figure de la
+  // partie superieure regarde le nombre de des
+  // qui a pour valeur **valeur_des**
   template <int valeur_des>
   class figure_superieure final : public figure {
   public:
     explicit figure_superieure(const std::string &nom)
-      : figure(partie::partie_superieur, nom) {}
+      : figure(partie_enum::partie_superieur, nom) {}
 
     void calc_points(const lancer &lancer) override {
       m_points = lancer[valeur_des - 1] * valeur_des;

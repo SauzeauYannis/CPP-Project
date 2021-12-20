@@ -7,11 +7,9 @@
 
 namespace coo {
 
+  // Fonction qui lance une fois les des et qui choisit
+  // la figure qui donne le plus de points
   void ia::joue_tour() {
-    std::cout << m_nom << " lance les des" << std::endl << std::endl;
-
-    graphique::pause_et_efface();
-
     m_lancer->tout_lancer();
 
     resultat_lancer();
@@ -31,9 +29,7 @@ namespace coo {
     change_points(figure + 1);
 
     std::cout << std::endl << "La figure " << m_figures[figure]->nom()
-              << " a ete choisie par " << m_nom << std::endl << std::endl;
-
-    graphique::pause_et_efface();
+              << " a ete choisie par " << *this << std::endl << std::endl;
   }
 
 }

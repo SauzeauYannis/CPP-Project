@@ -11,6 +11,7 @@
 
 namespace coo {
 
+  // Classe qui represente un de
   class de {
   public:
     static constexpr int val_min = 1;
@@ -28,6 +29,8 @@ namespace coo {
     int valeur() const { return m_valeur; }
   };
 
+  // Classe qui represente un lancer
+  // de plusieurs des
   class lancer {
   public:
     static constexpr int nombre_des = 5;

@@ -7,11 +7,16 @@
 
 namespace coo {
 
+  // Fonction qui represente le tour d'un joueur
+  // Lors de son tour le joueur a 3 jets pour
+  // realiser une figure
+  // Pour les deux premiers jets, il peut choisir
+  // - De relancer tous les des
+  // - De choisir les des qu'il veut relancer
+  // - De constuire une figure
+  // Pour le dernier jet, il est oblige de
+  // construire une figure
   void joueur::joue_tour() {
-    std::cout << m_nom << " c'est a votre tour de lancer les des" << std::endl << std::endl;
-
-    graphique::pause_et_efface();
-
     m_lancer->tout_lancer();
 
     for (int i = 1; i < lancer::nombre_jets; ++i) {
@@ -32,7 +37,6 @@ namespace coo {
           break;
         default:
           choisi_figure();
-          graphique::efface();
           return;
       }
 
@@ -44,23 +48,20 @@ namespace coo {
     std::cout << "C'etait votre dernier lancer, vous devez choisir une figure" << std::endl << std::endl;
 
     choisi_figure();
-
-    graphique::efface();
   }
 
-  std::ostream &operator<<(std::ostream &out, const joueur &joueur) {
-    out << joueur.m_nom << " avec " << std::to_string(joueur.m_points) << " points";
-    return out;
-  }
-
+  // Change les points du joueur selon la figure qu'il choisit
+  // Ajoute la prime au besoin
   void joueur::change_points(int choix_figure) {
     m_points += m_figures[choix_figure - 1]->points();
-    if (m_figures[choix_figure - 1]->partie() == partie::partie_superieur) {
+    if (m_figures[choix_figure - 1]->partie() == partie_enum::partie_superieur) {
       m_points_restant_pour_prime -= static_cast<int>(m_figures[choix_figure - 1]->points());
       if (m_points_restant_pour_prime <= 0) m_points += points_prime;
     }
   }
 
+  // Affiche le resultat du lancer et calcule les points
+  // des figures qu'il n'a pas encore selectionnes
   void joueur::resultat_lancer() const {
     std::cout << "Le resultat de votre lancer est le suivant:" << std::endl << std::endl;
     std::cout << *m_lancer << std::endl << std::endl;
@@ -107,6 +108,11 @@ namespace coo {
       }
       m_lancer->lancer_des(des_a_relancer);
     }
+  }
+
+  std::ostream& operator<<(std::ostream& out, const joueur& joueur) {
+    out << joueur.m_nom;
+    return out;
   }
 
 }

@@ -9,6 +9,7 @@
 
 namespace coo {
 
+  // Fonction statique qui retourne un tableau avec toutes les figures possibles
   std::array<std::unique_ptr<figure>, figure::nombre_figures> figure::init_figures() {
     return {
       std::make_unique<figure_superieure<1>>("As"),

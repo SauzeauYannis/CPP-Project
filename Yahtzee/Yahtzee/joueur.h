@@ -13,26 +13,28 @@
 
 namespace coo {
 
+  // Classe qui represente un joueur avec les figures
+  // qu'il a realise ou qu'il peut realiser
   class joueur {
     static constexpr int points_pour_prime = 63;
     static constexpr int points_prime = 35;
 
     int m_points_restant_pour_prime;
     unsigned int m_points;
-  protected:
     const std::string m_nom;
+  protected:
     std::array<std::unique_ptr<figure>, figure::nombre_figures> m_figures;
     std::shared_ptr<lancer> m_lancer;
   public:
-    virtual ~joueur() = default;
-
     joueur(const std::string &nom, const std::shared_ptr<lancer> &lancer)
       : m_points_restant_pour_prime(points_pour_prime), m_points(0),
         m_nom(nom), m_figures(figure::init_figures()), m_lancer(lancer) {}
 
-    unsigned int points() const { return m_points; }
+    virtual ~joueur() = default;
 
     virtual void joue_tour();
+
+    unsigned int points() const { return m_points; }
 
     friend std::ostream &operator<<(std::ostream &, const joueur &);
   protected:

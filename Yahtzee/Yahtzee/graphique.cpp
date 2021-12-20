@@ -10,16 +10,21 @@
 
 namespace coo {
 
+  // Fais une pause dand le programme en attendant
+  // que le joueur appuit sur la touche entree
   void graphique::pause() {
 #if defined _WIN32
     std::system("pause");
 #elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__) || defined (__APPLE__)
-    std::cout << "Press <enter> to continue";
+    std::cout << "Appuyez sur <entree> pour continuer";
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 #endif
   }
 
+  // Efface la console
   void graphique::efface() {
 #if defined _WIN32
     std::system("cls");
@@ -44,6 +49,8 @@ namespace coo {
     std::cout << separateur_figures << std::endl;
   }
 
+  // Demande a l'utilisateur de rentrer un nombre compris
+  // entre **min** et **max**
   int graphique::demande_choix(const int min, const int max) {
     int choix = min - 1;
     do {
@@ -58,6 +65,7 @@ namespace coo {
     return choix;
   }
 
+  // Demande un choix ou il peut repondre par oui ou par non
   char graphique::demande_oui_non() {
     std::cout << " oui (o) ou non (n) ";
     std::string oui_ou_non;

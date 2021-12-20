@@ -17,7 +17,7 @@ namespace YahtzeeTest
 		TEST_METHOD(InitFigureSuperieure)
 		{
       const std::string nom = "As";
-			constexpr coo::partie partie = coo::partie::partie_superieur;
+			constexpr coo::partie_enum partie = coo::partie_enum::partie_superieur;
 			constexpr unsigned int points = 0;
 			constexpr bool est_choisie = false;
 
@@ -28,11 +28,11 @@ namespace YahtzeeTest
 			Assert::AreEqual(points, as.points());
 			Assert::AreEqual(est_choisie, as.est_choisie());
 		}
-
+		
 		TEST_METHOD(InitSuite)
 		{
 			const std::string nom = "Petite suite";
-			constexpr coo::partie partie = coo::partie::partie_inferieur;
+			constexpr coo::partie_enum partie = coo::partie_enum::partie_inferieur;
 			constexpr unsigned int points = 0;
 			constexpr bool est_choisie = false;
 
@@ -43,11 +43,11 @@ namespace YahtzeeTest
 			Assert::AreEqual(points, petite_suite.points());
 			Assert::AreEqual(est_choisie, petite_suite.est_choisie());
 		}
-
+		
 		TEST_METHOD(InitFigureDesEgaux)
 		{
 			const std::string nom = "Brelan";
-			constexpr coo::partie partie = coo::partie::partie_inferieur;
+			constexpr coo::partie_enum partie = coo::partie_enum::partie_inferieur;
 			constexpr unsigned int points = 0;
 			constexpr bool est_choisie = false;
 
@@ -58,14 +58,14 @@ namespace YahtzeeTest
 			Assert::AreEqual(points, brelan.points());
 			Assert::AreEqual(est_choisie, brelan.est_choisie());
 		}
-
+		
 		TEST_METHOD(InitDe)
 	  {
 			const coo::de de;
 
 			Assert::AreEqual(coo::de::val_min, de.valeur());
 		}
-
+		
 		TEST_METHOD(InitLancer)
 	  {
 			const coo::lancer lancer;
@@ -88,7 +88,7 @@ namespace YahtzeeTest
 			Assert::AreEqual(static_cast<unsigned>(0), ia.points());
 		}
 	};
-
+	
 	TEST_CLASS(LancerTests)
 	{
 	public:
@@ -190,4 +190,27 @@ namespace YahtzeeTest
 
 	};
 
+	TEST_CLASS(IATest)
+	{
+	public:
+
+		TEST_METHOD(JoueTour)
+		{
+			coo::ia ia(std::make_shared<coo::lancer>());
+
+			unsigned int points_avant_jouer = ia.points();
+
+			ia.joue_tour();
+
+			Assert::IsTrue(ia.points() > points_avant_jouer);
+
+			points_avant_jouer = ia.points();
+
+			ia.joue_tour();
+
+			Assert::IsTrue(ia.points() > points_avant_jouer);
+		}
+
+	};
+	
 }

@@ -11,6 +11,7 @@
 
 namespace coo {
 
+  // Classe qui represente le jeu avec ses joueurs
   class jeu {
     int m_nb_manches;
     std::vector<std::unique_ptr<joueur>> m_joueurs;

@@ -13,6 +13,10 @@ namespace coo {
   class de;
   class figure;
 
+  // Classe composee uniquement de methodes statiques
+  // qui servent a afficher le jeu dans les meilleurs
+  // conditions peut importe l'OS depuis lequel vous
+  // lancez le jeu
   class graphique {
     static constexpr char separateur_figures[] = "-----------------------------------";
   public:

@@ -7,6 +7,8 @@
 
 namespace coo {
 
+  // Classe qui herite de joueur et qui represente
+  // un IA jouee par l'ordinateur
   class ia final : public joueur {
   public:
     explicit ia(const std::shared_ptr<lancer>& lancer)
