@@ -69,7 +69,7 @@ Quand la partie est terminée, le classement est ainsi affiché en fonction des 
 
 ### Résultat
 
-Nous avons obtenu la note de ?/20. (Résultat en janvier)
+Nous avons obtenu la note de 12/20.
 
 <a name="en"/>
 
@@ -130,4 +130,4 @@ When the game is over, the ranking is displayed according to the scores and you 
 
 ### Result
 
-We obtained a score of ?/20. (Result in January)
+We obtained a score of 12/20.
